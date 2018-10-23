@@ -2,22 +2,25 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img1 = cv2.imread('saeron2.jpg', cv2.IMREAD_GRAYSCALE)
-img2 = cv2.imread('saeron2.jpg')
+img1 = np.array(cv2.imread('images/hand_canny.png', 0), dtype=np.uint8)
+img2 = np.array(cv2.imread('images/hand_erosion.png', 0), dtype=np.uint8)
 
-# gray
-hist1 = cv2.calcHist([img1], [0], None, [256], [0, 256])
-plt.plot(hist1)
-plt.show()
+lst = []
 
+white = np.logical_and(img1, img2)
+for i in range(white.shape[0]):
+    for j in range(white.shape[1]):
+        if white[i, j] == True:
+            lst.append((i, j))
+print(lst)
+print(len(lst))
+# np.savetxt('images/white.txt', white, fmt='%d')
 
-# gray + color
-plt.hist(img1.ravel(), 256, [0, 256])
+addition = np.add(img1, img2)
+np.savetxt('images/addition.txt', addition, fmt='%d')
+print(addition[0, 288])
 
-color = ('b', 'g', 'r')
-for i, col in enumerate(color):
-    hist = cv2.calcHist([img2], [i], None, [256], [0, 256])
-    plt.plot(hist, color=col)
-    plt.xlim([0, 256])
+val = np.full(addition.shape, 255)
 
-plt.show()
+# print(addition)
+# print(val)

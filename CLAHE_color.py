@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-bgr = cv2.imread('saeron2.jpg')
+bgr = cv2.imread('hand.png')
 
 lab = cv2.cvtColor(bgr, cv2.COLOR_BGR2LAB)
 lab_planes = cv2.split(lab)
@@ -18,3 +18,4 @@ stack = np.hstack((bgr, bgr2))
 cv2.imshow('CLAHE color', stack)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+cv2.imwrite('hand_clahe.png', bgr2)
