@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Opencv는 H W C!!!!
-img = cv2.imread('images/hand.png')
+img = cv2.imread('images/palm.png')
 
 ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
 
