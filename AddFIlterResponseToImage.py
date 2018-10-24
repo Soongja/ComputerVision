@@ -7,8 +7,9 @@ img2 = cv2.imread('images/hand_canny.png').astype(np.int32)
 
 added = np.add(img1, img2)
 
-maxed = np.clip(addition, 0, 255).astype(np.uint8)
+maxed = np.clip(added, 0, 255).astype(np.uint8)
 
 cv2.imshow('show', maxed)
+cv2.imwrite('images/hand_filter_added.png', maxed)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
